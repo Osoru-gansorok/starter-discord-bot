@@ -10,8 +10,13 @@ test('sandbox.start', async t=> {
 
 // your tests will go here
 //http://localhost:3333
-test( 'My first test', function( assert ) {
-  assert.equal( 2, 2, 'Numbers 1 and 2 are the same' ) ;
+test( 'Test 1', function( assert ) {
+  assert.equal( 2, 2, 'Numbers 2 and 2 are the same' ) ;
+  assert.end() ;
+} ) ;
+
+test( 'Test 2', function( assert ) {
+  assert.equal( 2, 2, 'Numbers 2 and 2 are the same' ) ;
   assert.end() ;
 } ) ;
 
