@@ -1,5 +1,5 @@
-const sandbox = require('@architect/sandbox')
-const test = require('tape')
+let sandbox = require('@architect/sandbox')
+let test = require('tape')
 let end
 
 test('sandbox.start', async t=> {
