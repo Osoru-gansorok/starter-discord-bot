@@ -1,7 +1,8 @@
 const fastify = require("fastify");
 const{ InteractionResponseType, InteractionType, verifyKey } = require("discord-interactions");
 const rawBody = require("fastify-raw-body");
-
+const { SLAP_COMMAND, INVITE_COMMAND } = require("./commands.js");
+const INVITE_URL = `https://discord.com/oauth2/authorize?client_id=${process.env.APPLICATION_ID}&scope=applications.commands`;
 
 
 
@@ -64,6 +65,33 @@ server.post("/", async (request, response) => {
       response.send({
         type: InteractionResponseType.PONG,
       });
+    }
+    else if (message.type === InteractionType.APPLICATION_COMMAND) {
+        switch (message.data.name.toLowerCase()) {
+          case SLAP_COMMAND.name.toLowerCase():
+            response.status(200).send({
+              type: 4,
+              data: {
+                content: `*<@${message.member.user.id}> slaps <@${message.data.options[0].value}> around a bit with a large trout*`,
+              },
+            });
+            server.log.info('Slap Request');
+            break;
+          case INVITE_COMMAND.name.toLowerCase():
+            response.status(200).send({
+              type: 4,
+              data: {
+                content: INVITE_URL,
+                flags: 64,
+              },
+            });
+            server.log.info('Invite request');
+            break;
+          default:
+            server.log.error('Unknown Command');
+            response.status(400).send({ error: 'Unknown Type' });
+            break;
+        }
     } else {
       server.log.error("Unknown Type");
       response.status(400).send({ error: "Unknown Type" });
@@ -77,7 +105,7 @@ server.post("/", async (request, response) => {
 
 
 
-server.listen(3000, async (error, address) => {
+server.listen(3333, async (error, address) => {
     if (error) {
       server.log.error(error);
       process.exit(1);

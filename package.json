@@ -1,12 +1,12 @@
 {
   "name": "starter-discord-bot",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "Follow these instructions after deploying this repo on Cyclic.sh",
+  "main": "server.js",
   "scripts": {
     "test": "tape test/index-test.js | tap-spec",
-    "dev": "nodemon index.js",
-    "start": "node index.js"
+    "dev": "nodemon server.js",
+    "start": "node server.js"
   },
   "repository": {
     "type": "git",
@@ -33,5 +33,10 @@
   },
   "devDependencies": {
     "nodemon": "^2.0.19"
-  }
+  },
+  "directories": {
+    "doc": "doc",
+    "test": "test"
+  },
+  "keywords": []
 }
