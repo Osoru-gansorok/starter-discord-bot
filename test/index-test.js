@@ -16,7 +16,7 @@ test( 'Test 1', function( assert ) {
 } ) ;
 
 test( 'Test 2', function( assert ) {
-  assert.equal( 2, 2, 'Numbers 2 and 2 are the same' ) ;
+  assert.equal( 3, 3, 'Numbers 3 and 3 are the same' ) ;
   assert.end() ;
 } ) ;
 
