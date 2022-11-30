@@ -5,7 +5,6 @@
   "main": "server.js",
   "scripts": {
     "test": "tape test/index-test.js | tap-spec",
-    "dev": "nodemon server.js",
     "start": "node server.js"
   },
   "repository": {
@@ -28,9 +27,6 @@
     "sandbox": "^0.8.6",
     "tap-spec": "^2.2.2",
     "tape": "^5.6.1"
-  },
-  "devDependencies": {
-    "nodemon": "^2.0.19"
   },
   "directories": {
     "doc": "doc",
