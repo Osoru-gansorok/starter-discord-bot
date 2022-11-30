@@ -17,9 +17,18 @@ const server = fastify({
 
 
 
-server.register(rawBody, {
-    runFirst: true,
-});
+// server.register(rawBody, {
+//     runFirst: true,
+// });
+
+await server.register(rawBody, {
+  runFirst: true,
+  field: 'rawBody', // change the default request.rawBody property name
+  global: false, // add the rawBody to every request. **Default true**
+  encoding: 'utf8', // set it to false to set rawBody as a Buffer **Default utf8**
+  runFirst: true, // get the body before any preParsing hook change/uncompress it. **Default false**
+  routes: [] // array of routes, **`global`** will be ignored, wildcard routes not supported
+})
 
 
 
@@ -38,12 +47,11 @@ server.addHook('preHandler', async (request, response) => {
       const signature = request.headers['x-signature-ed25519'];
       const timestamp = request.headers['x-signature-timestamp'];
       const isValidRequest = verifyKey(
-        request.raw.body,
+        request.rawBody,
         signature,
         timestamp,
         process.env.PUBLIC_KEY
       );
-      console.log("******",process.env.PUBLIC_KEY,"******")
       if (!isValidRequest) {
         server.log.info('Invalid Request');
         return response.status(401).send({ error: 'Bad request signature ' });
