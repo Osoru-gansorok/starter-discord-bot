@@ -18,6 +18,7 @@ const server = fastify({
 
 await server.register(import('fastify-raw-body'), {
     runFirst: true,
+    encoding: 'false',
 });
 
 // server.register(rawBody, {
