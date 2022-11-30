@@ -21,7 +21,7 @@ const server = fastify({
 //     runFirst: true,
 // });
 
-await server.register(rawBody, {
+server.register(rawBody, {
   runFirst: true,
   field: 'rawBody', // change the default request.rawBody property name
   global: false, // add the rawBody to every request. **Default true**
