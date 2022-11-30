@@ -17,17 +17,17 @@ const server = fastify({
 
 
 
-// server.register(rawBody, {
-//     runFirst: true,
-// });
-
 server.register(rawBody, {
-  field: 'rawBody', // change the default request.rawBody property name
-  global: true, // add the rawBody to every request. **Default true**
-  encoding: 'utf8', // set it to false to set rawBody as a Buffer **Default utf8**
-  runFirst: true, // get the body before any preParsing hook change/uncompress it. **Default false**
-  routes: [] // array of routes, **`global`** will be ignored, wildcard routes not supported
-})
+    runFirst: true,
+});
+
+// server.register(rawBody, {
+//   field: 'rawBody', // change the default request.rawBody property name
+//   global: true, // add the rawBody to every request. **Default true**
+//   encoding: 'utf8', // set it to false to set rawBody as a Buffer **Default utf8**
+//   runFirst: true, // get the body before any preParsing hook change/uncompress it. **Default false**
+//   routes: [] // array of routes, **`global`** will be ignored, wildcard routes not supported
+// })
 
 
 
@@ -42,6 +42,7 @@ server.get("/", (request, response) => {
 
 server.addHook('preHandler', async (request, response) => {
     // We don't want to check GET requests to our root url
+    console.log(request.rawBody);
     if (request.method === 'POST') {
       const signature = request.headers['x-signature-ed25519'];
       const timestamp = request.headers['x-signature-timestamp'];
