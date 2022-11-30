@@ -17,8 +17,9 @@ const server = fastify({
 
 
 
-server.register(rawBody, {
+await server.register(rawBody, {
     runFirst: true,
+    global: true,
 });
 
 // server.register(rawBody, {
