@@ -38,7 +38,7 @@ server.addHook('preHandler', async (request, response) => {
       const signature = request.headers['x-signature-ed25519'];
       const timestamp = request.headers['x-signature-timestamp'];
       const isValidRequest = verifyKey(
-        request.rawBody,
+        request.raw.body,
         signature,
         timestamp,
         process.env.PUBLIC_KEY
