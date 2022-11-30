@@ -20,6 +20,13 @@ await server.register(rawBody, {
     runFirst: true,
 });
 
+await server.register(rawBody, {
+  runFirst: true,
+});
+await server.register(rawBody, {
+  runFirst: true,
+});
+
 // server.register(rawBody, {
 //   field: 'rawBody', // change the default request.rawBody property name
 //   global: true, // add the rawBody to every request. **Default true**
