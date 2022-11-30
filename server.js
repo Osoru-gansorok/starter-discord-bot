@@ -1,7 +1,7 @@
-const fastify = require("fastify");
-const{ InteractionResponseType, InteractionType, verifyKey } = require("discord-interactions");
-const rawBody = require("fastify-raw-body");
-const { SLAP_COMMAND, INVITE_COMMAND } = require("./commands.js");
+import fastify from "fastify";
+import { InteractionResponseType, InteractionType, verifyKey } from "discord-interactions";
+import rawBody from "fastify-raw-body";
+import { SLAP_COMMAND, INVITE_COMMAND } from "./commands.js";
 const INVITE_URL = `https://discord.com/oauth2/authorize?client_id=${process.env.APPLICATION_ID}&scope=applications.commands`;
 
 
@@ -16,8 +16,8 @@ const server = fastify({
 
 
 
-
-server.register(rawBody, {
+await server.register(rawBody, {
+    field: 'rawBody',
     runFirst: true,
     global: true,
 });

@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Follow these instructions after deploying this repo on Cyclic.sh",
   "main": "server.js",
+  "type":"module",
   "scripts": {
     "test": "tape test/index-test.js | tap-spec",
     "start": "node server.js"
