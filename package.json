@@ -4,7 +4,6 @@
   "description": "Follow these instructions after deploying this repo on Cyclic.sh",
   "main": "server.js",
   "scripts": {
-    "build": "yarn",
     "test": "tape test/index-test.js | tap-spec",
     "dev": "nodemon server.js",
     "start": "node server.js"
@@ -21,7 +20,6 @@
   "homepage": "https://github.com/korostelevm/starter-discord-bot#readme",
   "dependencies": {
     "@architect/sandbox": "^5.4.0",
-    "architect": "^0.1.13",
     "axios": "^0.27.2",
     "body-parser": "^1.20.0",
     "discord-interactions": "^3.2.0",
