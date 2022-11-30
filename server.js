@@ -1,6 +1,6 @@
 import fastify from "fastify";
 import { InteractionResponseType, InteractionType, verifyKey } from "discord-interactions";
-import rawBody from "fastify-raw-body";
+//import rawBody from "fastify-raw-body";
 import { SLAP_COMMAND, INVITE_COMMAND } from "./commands.js";
 const INVITE_URL = `https://discord.com/oauth2/authorize?client_id=${process.env.APPLICATION_ID}&scope=applications.commands`;
 
@@ -16,15 +16,8 @@ const server = fastify({
 
 
 
-await server.register(rawBody, {
+await server.register(import('fastify-raw-body'), {
     runFirst: true,
-});
-
-await server.register(rawBody, {
-  runFirst: true,
-});
-await server.register(rawBody, {
-  runFirst: true,
 });
 
 // server.register(rawBody, {
