@@ -4,6 +4,7 @@
   "description": "Follow these instructions after deploying this repo on Cyclic.sh",
   "main": "server.js",
   "scripts": {
+    "build": "yarn",
     "test": "tape test/index-test.js | tap-spec",
     "dev": "nodemon server.js",
     "start": "node server.js"
