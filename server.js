@@ -45,6 +45,10 @@ server.addHook('preHandler', async (request, response) => {
     console.log("############");
     console.log(request.rawBody);
     console.log("############");
+    console.log(request.headers['x-signature-ed25519']);
+    console.log("############");
+    console.log(request.headers['x-signature-timestamp']);
+    console.log("############");
     if (request.method === 'POST') {
       const signature = request.headers['x-signature-ed25519'];
       const timestamp = request.headers['x-signature-timestamp'];
