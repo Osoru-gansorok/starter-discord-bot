@@ -61,7 +61,7 @@ server.addHook('preHandler', async (request, response) => {
       console.log("############");
       console.log(request.rawBody);
       console.log("############");
-      if (!isValidRequest) {
+      if (isValidRequest) {
         server.log.info('Invalid Request');
         return response.status(401).send({ error: 'Bad request signature ' });
       }
