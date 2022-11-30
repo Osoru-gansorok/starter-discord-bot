@@ -17,9 +17,7 @@ const server = fastify({
 
 
 await server.register(rawBody, {
-    field: 'rawBody',
     runFirst: true,
-    global: true,
 });
 
 // server.register(rawBody, {
