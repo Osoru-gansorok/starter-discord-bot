@@ -43,6 +43,7 @@ server.addHook('preHandler', async (request, response) => {
         timestamp,
         process.env.PUBLIC_KEY
       );
+      console.log("******",process.env.PUBLIC_KEY,"******")
       if (!isValidRequest) {
         server.log.info('Invalid Request');
         return response.status(401).send({ error: 'Bad request signature ' });
